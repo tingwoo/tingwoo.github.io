@@ -8,13 +8,15 @@ function preload() {
 
 function setup() {
   cnv = createCanvas(windowWidth, windowHeight, WEBGL);
-  cnv.position(0, 0);
-  shader(myShader);
+  cnv.position(0, 0); 
 }
 
 function draw() {
+  shader(myShader);
+  myShader.setUniform('uResolution', windowWidth > windowHeight ? [windowWidth/windowHeight, 1] : [1, windowHeight/windowWidth]);
+  myShader.setUniform('uTime', millis() / 1000.0);
   
-  background(220, 0, 0);
+  // background(220, 0, 0);
 
   rect(0, 0, windowWidth, windowHeight);
 }
