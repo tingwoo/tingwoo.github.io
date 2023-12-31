@@ -1,5 +1,7 @@
 var cnv;
 let myShader;
+let rand;
+// let noiseTexture;
 
 function preload() {
   // load each shader file (don't worry, we will come back to these!)
@@ -9,14 +11,18 @@ function preload() {
 function setup() {
   cnv = createCanvas(windowWidth, windowHeight, WEBGL);
   cnv.position(0, 0); 
+
+  rand = random(0, 300);
+
+  // noiseTexture = loadImage("noise.jpg");
 }
 
 function draw() {
   shader(myShader);
-  myShader.setUniform('uResolution', windowWidth > windowHeight ? [windowWidth/windowHeight, 1] : [1, windowHeight/windowWidth]);
-  myShader.setUniform('uTime', millis() / 1000.0);
-  
-  // background(220, 0, 0);
+  myShader.setUniform('uResolution', [windowWidth/windowHeight, 1]);
+  myShader.setUniform('uTime', millis() / 1000.0 + rand);
+  myShader.setUniform('uRunningTime', millis() / 1000.0);
+  // myShader.setUniform('uTex', noiseTexture);
 
   rect(0, 0, windowWidth, windowHeight);
 }
