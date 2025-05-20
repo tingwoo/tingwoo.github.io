@@ -60,3 +60,46 @@ canvas {
   z-index: -3 !important;
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+    align-items: center; /* Center items when in column direction */
+    gap: 15px; /* Slightly reduced gap for smaller screens */
+  }
+
+  .circle {
+    width: 120px; /* Smaller circles */
+    height: 120px;
+  }
+
+  .center-block {
+    margin-left: 20px; /* Reduced margins */
+    margin-right: 20px;
+  }
+
+  .header-text {
+    font-size: 24px; /* Slightly smaller header text */
+    align-self: center; /* Center header text when flex-container is column */
+  }
+}
+
+@media (max-width: 480px) {
+  .circle {
+    width: 100px; /* Even smaller circles */
+    height: 100px;
+  }
+
+  .header-text {
+    font-size: 20px; /* Smaller header text */
+  }
+
+  .center-block {
+    margin-left: 10px; /* Minimal margins */
+    margin-right: 10px;
+  }
+
+  .flex-container {
+    gap: 10px; /* Further reduced gap */
+  }
+}
